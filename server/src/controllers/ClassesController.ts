@@ -56,13 +56,14 @@ export default class ClassesController{
         const trx = await db.transaction();
 
         try{
+            // passar essa parte para um novo controller
             const insertedUsersIds = await trx('users').insert({
                 name,
                 avatar,
                 whatsapp,
                 bio,
             });
-        
+            // trocar a constante para pegar o id do usuario logado
             const user_id = insertedUsersIds[0];
         
             const insertedClassesIds = await trx('classes').insert({
